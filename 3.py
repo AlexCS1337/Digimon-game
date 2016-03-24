@@ -88,7 +88,7 @@ pygame.init()
 screen = pygame.display.set_mode([300, 100])
 pygame.display.set_caption('Digimon Simulator')
 onTop(pygame.display.get_wm_info()['window'])
-font = pygame.font.Font(None, 15)
+font = pygame.font.Font("Digimonbasic.ttf", 15)
 black = (  0,  0,  0) # defines colours for ease of use
 background_image = pygame.image.load("background.png").convert()
 bar_full = pygame.image.load("bar_background.png").convert()
@@ -148,7 +148,7 @@ while not done:
 	
 	age_text = font.render("AGE:   " + str(Player.age), True, black)
 	
-	screen.blit(age_text, [220, 10])
+	screen.blit(age_text, [200, 10])
 		
 	Agumon_idle_right_cycle_next = Agumon_idle_right_cycle.next()
 	Elecmon_idle_right_cycle_next = Elecmon_idle_right_cycle.next()
