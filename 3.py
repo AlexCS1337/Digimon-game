@@ -88,6 +88,8 @@ pygame.init()
 screen = pygame.display.set_mode([300, 100])
 pygame.display.set_caption('Digimon Simulator')
 onTop(pygame.display.get_wm_info()['window'])
+font = pygame.font.Font(None, 15)
+black = (  0,  0,  0) # defines colours for ease of use
 background_image = pygame.image.load("background.png").convert()
 bar_full = pygame.image.load("bar_background.png").convert()
 bar = pygame.image.load("bar.png").convert()
@@ -98,7 +100,7 @@ Digimon_x_pos, Digimon_y_pos = 150, 59
 # TIME -------------------------------------------------
 delay = 40
 test_delay = 100
-age_delay = 500
+age_delay = 1000
 clock = pygame.time.Clock()
 fps = 60
 timer = 0
@@ -143,6 +145,10 @@ while not done:
 	screen.blit(bar_full, [6,10])
 	screen.blit(bar_transform ,[24,15])
 	screen.blit(meat ,[50,40])
+	
+	age_text = font.render("AGE:   " + str(Player.age), True, black)
+	
+	screen.blit(age_text, [220, 10])
 		
 	Agumon_idle_right_cycle_next = Agumon_idle_right_cycle.next()
 	Elecmon_idle_right_cycle_next = Elecmon_idle_right_cycle.next()
@@ -178,7 +184,7 @@ while not done:
 					bar_length_x == 0
 				else:
 					bar_length_x -= 1
-					pygame.display.flip() # shows screen fill.
+				#	pygame.display.flip() # shows screen fill.
 	#pygame.display.flip() # shows screen fill.	
 	clock.tick(fps) # Limit to 60 frames per second
 pygame.quit()
