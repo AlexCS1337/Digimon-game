@@ -100,15 +100,18 @@ Digimon_x_pos, Digimon_y_pos = 150, 59
 # TIME -------------------------------------------------
 delay = 40
 test_delay = 100
-age_delay = 1000
+age_delay = 10000
+walk_delay = 100
 clock = pygame.time.Clock()
 fps = 60
 timer = 0
 test_timer = 0
 age_timer = 0
+walk_timer = 0
 change = False
 test_change = False
 age_change = False
+walk_change = False
 dt = 0
 clock.tick()
  
@@ -139,6 +142,7 @@ while not done:
 	timer += dt
 	test_timer += dt
 	age_timer += dt
+	walk_timer += dt
 	dt = clock.tick(fps)
 
 	bar_transform = pygame.transform.scale(bar, (bar_length_x, bar_length_y)) # transforms the bar to 50 x, 2 y. can be changed now
@@ -159,7 +163,7 @@ while not done:
 			age_timer -= age_delay
 			age_change = not age_change
 			if age_change:
-				Player.age += 0.01
+				Player.age += 0.1
 				print Player.age
 	#for the digimon sprites#
 		if timer >= delay:
@@ -169,12 +173,19 @@ while not done:
 				if Player.__dict__ == Elecmon.__dict__:
 					screen.blit((Elecmon_idle_right_cycle_next), (Digimon_x_pos, Digimon_y_pos))
 					pygame.display.flip() # shows screen fill.
+					if walk_timer >= walk_delay:
+						walk_timer -= walk_delay
+						walk_change = not walk_change
+						if walk_change:
+							for x in range(0,1):
+								Digimon_x_pos += 1	
 				elif Player.__dict__ == Botamon.__dict__:
 					screen.blit((Botamon_idle_right_cycle_next), (Digimon_x_pos, Digimon_y_pos))
 					pygame.display.flip() # shows screen fill.					
 				else:
 					screen.blit((Agumon_idle_right_cycle_next), (Digimon_x_pos, Digimon_y_pos))
 					pygame.display.flip() # shows screen fill.
+
 	#for the happiness bar
 		if test_timer >= test_delay:
 			test_timer -= test_delay
