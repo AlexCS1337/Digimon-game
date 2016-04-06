@@ -33,41 +33,37 @@ def onTop(window):
 ## CLASSES ----------------------------------------------
  
 class Digimon(object):
-    def __init__(self,age ,weight,strength,defence,speed,intelligence):
+    def __init__(self,age ,weight):
         self.age = age
         self.weight = weight    
-        self.strength = strength
-        self.defence = defence  
-        self.speed = speed  
-        self.intelligence = intelligence
        
-Player  = Digimon(0,0,0,0,0,0)
+Player  = Digimon(0,0)
 
 ## Egg -----------------------------------------------
 
-Egg = Digimon(0,0,0,0,0,0)
+#Egg = Digimon(0,0,0,0,0,0)
 
 ## In training I -----------------------------------------------
-Botamon = Digimon(0,2,1,0,0,0)
-Ketomon = Digimon(0,2,2,0,0,0)
-Kuamon  = Digimon(0,2,0,1,0,0)
-Poyomon = Digimon(0,2,0,0,0,1)
-Punimon = Digimon(0,2,0,0,1,0)
+#Botamon = Digimon(0,2,1,0,0,0)
+#Ketomon = Digimon(0,2,2,0,0,0)
+#Kuamon  = Digimon(0,2,0,1,0,0)
+#Poyomon = Digimon(0,2,0,0,0,1)
+#Punimon = Digimon(0,2,0,0,1,0)
 
 ## In training II ----------------------------------------------
-Koromon = Digimon(2,4,3,1,1,1)
+#Koromon = Digimon(2,4,3,1,1,1)
 ## Rookie ------------------------------------------------------
 #Agumon
-Elecmon = Digimon(4,5,5,3,4,4)
+#Elecmon = Digimon(4,5,5,3,4,4)
 #Patamon
 #Wormmon
 #Veemon
-Terriermon = Digimon(4,4,3,3,5,4)
-Keramon    = Digimon(4,3,6,2,2,6)
+#Terriermon = Digimon(4,4,3,3,5,4)
+#Keramon    = Digimon(4,3,6,2,2,6)
 
 
 ## Ultimate ----------------------------------------------------
-Pumpkinmon = Digimon(12,8,12,8,6,8)
+#Pumpkinmon = Digimon(12,8,12,8,6,8)
 
 
  
@@ -121,7 +117,7 @@ Egg_timer, Egg_delay, Egg_change = 0,40, False
 Botamon_timer, Botamon_delay, Botamon_change = 0, 40, False
 Koromon_timer, Koromon_delay, Koromon_change = 0, 40, False
 Elecmon_timer, Elecmon_delay, Elecmon_change = 0, 40, False
-Age_timer, Age_delay, Age_change = 0, 1200000, False
+Age_timer, Age_delay, Age_change = 0, 1200, False #1200000
 Hunger_timer, Hunger_delay, Hunger_change = 0,40,False
 Sleep_timer, Sleep_delay, Sleep_change = 0,60000,False
 Random_timer, Random_delay, Random_change = 0,6000,False
@@ -213,7 +209,6 @@ while not done:
 				Egg_timer -= Egg_delay
 				Egg_change = not Egg_change
 				if Egg_change:
-					Player.__dict__ == Egg.__dict__
 					screen.blit((Eggcycle_next), (Digimon_x_pos, Digimon_y_pos))
 					pygame.display.flip() # shows screen fill.	
 					if left == True:
